@@ -1,0 +1,178 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+<p>tblshamelsceducationmodify works!</p>
+
+<form [formGroup]="Form" novalidate>
+
+  <div class="form-group">
+    <mat-form-field class="example-full-width"appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input type="text"matInput [formControl]="incmarsoom_id"formControlName="incmarsoom_id"[matAutocomplete]="auto_incmarsoom_id">
+      <mat-error *ngIf="errorHandling('incmarsoom_id', 'required')">
+        You must provide a<strong>name</strong>
+     </mat-error>
+
+      <mat-error *ngIf="(( incmarsoom_id.invalid ||  incmarsoom_id.errors)  && ( incmarsoom_id.dirty ||  incmarsoom_id.touched) )">
+        
+          sdfsdf
+        
+
+     </mat-error>
+     <mat-hint *ngIf="(( incmarsoom_id.invalid ||  incmarsoom_id.errors)  && ( incmarsoom_id.dirty ||  incmarsoom_id.touched) )"><span class="mat-error">Please choose a X</span></mat-hint>
+      
+      <mat-autocomplete #auto_incmarsoom_id="matAutocomplete"[displayWith]="displayMarsoomProperty.bind(this)"(optionSelected)="OnSelectMarsoomChange($event)">
+        <mat-option *ngFor="let option of filteredMarsoomOptions | async"[value]="option.incmarsoom_id">
+          {{option.incmarsoomdata}}
+        </mat-option>
+
+        
+      </mat-autocomplete>
+     
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Value binding</mat-label>
+
+    <input matInput [matDatepicker]="Datepicker_changedate" [formControl]="changedate"formControlName="changedate"
+    (dateInput)="addEvent('input', $event)"
+    (dateChange)="addEvent('change', $event)">
+    <mat-datepicker-toggle matSuffix [for]="Datepicker_changedate"></mat-datepicker-toggle>
+    <mat-datepicker #Datepicker_changedate></mat-datepicker>
+  </mat-form-field>
+  
+
+  <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> changereason_id</mat-label>
+        <input type="text"matInput [formControl]="changereason_id"[matAutocomplete]="auto_changereason_id">
+        <mat-autocomplete #auto_changereason_id="matAutocomplete"[displayWith]="displayChangeReasonProperty.bind(this)"(optionSelected)="OnSelectChangeReasonChange($event)">
+          <mat-option *ngFor="let option of filteredChangeReasonOptions | async"[value]="option.changereason_id">
+            {{option.changereason_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+<mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> documenttype_id</mat-label>
+        <input type="text"matInput [formControl]="documenttype_id"[matAutocomplete]="auto_documenttype_id">
+        <mat-autocomplete #auto_documenttype_id="matAutocomplete" [displayWith]="displayDocumentTypeProperty.bind(this)"(optionSelected)="OnSelectDocumentTypeChange($event)">
+          <mat-option *ngFor="let option of filteredDocumentTypeOptions | async"[value]="option.documenttype_id">
+            {{option.documenttype_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      
+
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label>Doc_Number</mat-label>
+        
+          <input matInput type="number"placeholder="Ex. Pizza"value="Sushi"[formControl]="doc_number" >
+        
+      </mat-form-field>
+
+
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+    
+        <input matInput [matDatepicker]="Datepicker_doc_date" [formControl]="doc_date"
+        (dateInput)="addEvent('input', $event)"
+        (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_doc_date"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_doc_date></mat-datepicker>
+      </mat-form-field>
+
+
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> department_id</mat-label>
+        <input type="text"matInput [formControl]="department_id" [matAutocomplete]="auto_department_id">
+        <mat-autocomplete #auto_department_id="matAutocomplete"[displayWith]="displayDeparmentProperty.bind(this)"(optionSelected)="OnSelectDepartmentChange($event)">
+          <mat-option *ngFor="let option of filteredDepartmentOptions | async"[value]="option.department_id">
+            {{option.department_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> jobname_id</mat-label>
+        <input type="text"matInput [formControl]="jobname_id"[matAutocomplete]="auto_jobname_id">
+        <mat-autocomplete #auto_jobname_id="matAutocomplete"[displayWith]="displayJobNameProperty.bind(this)"(optionSelected)="OnSelectJobNameChange($event)">
+          <mat-option *ngFor="let option of filteredJobNameOptions | async"[value]="option.jobname_id">
+            {{option.jobname_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> jobname_id</mat-label>
+        <input type="text"matInput [formControl]="jobkind_id"[matAutocomplete]="auto_jobkind_id">
+        <mat-autocomplete #auto_jobkind_id="matAutocomplete"[displayWith]="displayJobKindProperty.bind(this)"(optionSelected)="OnSelectJobKindChange($event)">
+          <mat-option *ngFor="let option of filteredJobKindOptions  | async"[value]="option.jobkind_id">
+            {{option.jobkind_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label> class_id</mat-label>
+        <input type="text"matInput [formControl]="class_id"[matAutocomplete]="auto_class_id">
+        <mat-autocomplete #auto_class_id="matAutocomplete"[displayWith]="displayClassProperty.bind(this)"(optionSelected)="OnSelectClassChange($event)">
+          <mat-option *ngFor="let option of filteredClassOptions  | async"[value]="option.class_id">
+            {{option.class_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width"appearance="fill">
+        <mat-label>Salary</mat-label>
+        
+          <input matInput type="number"placeholder="Ex. Pizza"value="Sushi"[formControl]="salary" [(ngModel)]="Selected_Employee_JobState.salary">
+        
+      </mat-form-field>
+
+
+    
+
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_begindate"[value]="Selected_Employee_JobState.begindate"[formControl]="begindate"
+        (dateInput)="addEvent('input', $event)"
+        (dateChange)="addEvent('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_begindate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_begindate></mat-datepicker>
+      </mat-form-field>
+
+
+
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn"mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"  (click)="onReset()">
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary" cdkFocusInitial (click)="Save()">
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>

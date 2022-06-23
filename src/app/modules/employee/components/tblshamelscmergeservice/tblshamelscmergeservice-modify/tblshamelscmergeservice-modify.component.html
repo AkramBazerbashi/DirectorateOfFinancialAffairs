@@ -1,0 +1,93 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+<p>tblshamelsceducationmodify works!</p>
+
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+
+<form [formGroup]="Form" >
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>duration</mat-label>        
+          <input matInput type="number" placeholder="Ex. Pizza" value="" [formControl]="fcl_days"  formControlName="duration" >        
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>duration</mat-label>        
+        <input matInput type="number" placeholder="Ex. Pizza" value="" [formControl]="fcl_months"  formControlName="duration" >        
+  </mat-form-field>
+
+
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>duration</mat-label>        
+      <input matInput type="number" placeholder="Ex. Pizza" value="" [formControl]="fcl_years"  formControlName="duration" >        
+  </mat-form-field>
+
+  
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input type="text" matInput [formControl]="fcl_mergeservicereason_id"  [matAutocomplete]="auto_mergeservicereason_id" >
+      <mat-error *ngIf="errorHandling('mergeservicereason_id', 'required')">
+        You must provide a<strong>name</strong>
+     </mat-error>      
+      <mat-autocomplete #auto_mergeservicereason_id="matAutocomplete" [displayWith]="display_TBLShamelMergeServiceReason.bind(this)" (optionSelected)="OnSelect_TBLShamelMergeServiceReason($event)">
+        <mat-option *ngFor="let option of filter_TBLShamelMergeServiceReason | async" [value]="option">
+          {{option.mergeservicereason_name}}
+        </mat-option>        
+      </mat-autocomplete>     
+    </mat-form-field>
+    
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>reason_id</mat-label>
+        <input type="text" matInput [formControl]="fcl_documenttype_id"  [matAutocomplete]="auto_documenttype_id">
+        <mat-autocomplete #auto_documenttype_id="matAutocomplete" [displayWith]="displayDocumentTypeProperty.bind(this)" (optionSelected)="OnSelect_DocumentType($event)">
+          <mat-option *ngFor="let option of filteredDocumentTypeOptions | async" [value]="option">
+            {{option.documenttype_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>document_number</mat-label>        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="fcl_document_number"   >        
+      </mat-form-field>
+     
+
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_documentdate"  [formControl]="fcl_documentdate"  >
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_documentdate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_documentdate></mat-datepicker>
+      </mat-form-field>
+
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions >
+    <button mat-raised-button color="warn" mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"   (click)="onReset()" >
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>
+

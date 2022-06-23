@@ -1,0 +1,279 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+
+<form [formGroup]="Form" novalidate>
+
+<mat-grid-list cols="2" rowHeight="8:1" gutterSize="5px">
+
+
+  
+
+  <mat-grid-tile >                
+          <mat-form-field appearance="fill">
+                  <mat-label>رقم الإضبارة </mat-label>
+                  <input matInput placeholder="" [formControl]="input_id" value="SelectedEmp &&  SelectedEmp.id ? SelectedEmp.id : ''"/>
+          </mat-form-field>
+  </mat-grid-tile>
+
+
+
+  <mat-grid-tile >
+    <mat-form-field class="example-full-width"appearance="fill">
+      <mat-label> Area_Name</mat-label>
+      <input type="text" matInput [formControl]="input_Area_ID" [matAutocomplete]="auto_Area_ID">
+      <mat-autocomplete #auto_Area_ID="matAutocomplete" [displayWith]="displayAreaProperty.bind(this)"(optionSelected)="OnSelectAreaChange($event)">
+
+        <mat-option *ngFor="let option of filtered_TBLShamelArea_Options | async" value="option.Area_ID">
+          {{option.Area_Name}}
+        </mat-option>
+
+      </mat-autocomplete>
+    </mat-form-field>         
+  </mat-grid-tile>
+
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+            <mat-label>رقم الحاسب الوزاري</mat-label>
+            <input matInput placeholder="" [formControl]="input_Computer_ID"  value="SelectedEmp &&  SelectedEmp.Computer_ID ? SelectedEmp.Computer_ID : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+  
+
+
+  <mat-grid-tile >
+    <mat-form-field class="example-full-width"appearance="fill">
+      <mat-label> Area_Name</mat-label>
+      <input type="text" matInput [formControl]="input_MiniArea_ID" [matAutocomplete]="auto_MiniArea_ID">
+      <mat-autocomplete #auto_MiniArea_ID="matAutocomplete" [displayWith]="displayMiniAreaProperty.bind(this)"(optionSelected)="OnSelectMiniAreaChange($event)">
+        <mat-option   *ngFor="let option of filtered_TBLShamelMiniArea_Options | async" value="option.MiniArea_ID">
+
+          {{option.MiniArea_Name}} 
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>   
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+
+        <mat-form-field class="example-full-width"appearance="fill">
+          <mat-label> StreetOrVillage_ID</mat-label>
+          <input type="text" matInput [formControl]="input_StreetOrVillage_ID" [matAutocomplete]="auto_StreetOrVillage_ID">
+          <mat-autocomplete #auto_StreetOrVillage_ID="matAutocomplete" [displayWith]="displayStreetOrVillageProperty.bind(this)" (optionSelected)="OnSelectStreetOrVillageChange($event)">
+            <mat-option *ngFor="let option of filtered_TBLShamelStreetOrVillage_Options | async" value="option.StreetOrVillage_ID">
+              {{option.StreetOrVillage_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>   
+    
+    
+      </mat-grid-tile>
+
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>رقم السجل العام</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Global_ID" value="SelectedEmp && SelectedEmp.Global_ID ? SelectedEmp.Global_ID : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>الرقم التأميني</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Insurance_ID" value="SelectedEmp && SelectedEmp.Insurance_ID ? SelectedEmp.Insurance_ID : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>محل الإقامة</mat-label>
+                  <input matInput placeholder="" [formControl]="input_ManualAddress" value="SelectedEmp && SelectedEmp.ManualAddress ?  SelectedEmp.ManualAddress : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>الاسم</mat-label>
+                  <input matInput placeholder="" [formControl]="input_FName" value="SelectedEmp && SelectedEmp.FName ? SelectedEmp.FName : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>الكنية</mat-label>
+                  <input matInput placeholder=""  [formControl]="input_LName" value="SelectedEmp && SelectedEmp.LName ?  SelectedEmp.LName : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>رقم تأشيرة الجهاز المركزي</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Qarar_Num" value="SelectedEmp && SelectedEmp.Qarar_Num ? SelectedEmp.Qarar_Num : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >           
+          <mat-form-field appearance="fill">
+            <mat-label>تاريخ التأشيرة</mat-label>
+        
+            <input matInput [matDatepicker]="Datepicker_QararDate" [formControl]="input_QararDate" value="SelectedEmp && SelectedEmp.QararDate ? moment(QararDate) : ''"
+            (dateInput)="addQararDateEvent('input', $event)"
+            (dateChange)="addQararDateEvent('change', $event)">
+            <mat-datepicker-toggle matSuffix [for]="Datepicker_QararDate"></mat-datepicker-toggle>
+            <mat-datepicker #Datepicker_QararDate></mat-datepicker>
+          
+
+          
+          
+        </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>الأب</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Father" value="SelectedEmp && SelectedEmp.Father ? SelectedEmp.Father: ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>الأم</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Mother" value="SelectedEmp && SelectedEmp.Mother ? SelectedEmp.Mother : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>مكان الولادة</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Birth_Place" value="SelectedEmp &&  SelectedEmp.Birth_Place ? SelectedEmp.Birth_Place : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+
+
+
+  <mat-grid-tile >
+
+    <mat-form-field class="example-full-width"appearance="fill">
+      <mat-label> input_Sex_ID</mat-label>
+      <input type="text" matInput [formControl]="input_Sex_ID" [matAutocomplete]="auto_Sex_ID">
+      <mat-autocomplete #auto_Sex_ID="matAutocomplete" [displayWith]="displaySexProperty.bind(this)" (optionSelected)="OnSelectSexChange($event)">
+        <mat-option *ngFor="let option of filtered_TBLShamelSex_Options | async" value="option.Sex_ID">
+          {{option.Sex_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>   
+
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+        <mat-form-field appearance="fill">
+    <mat-label> MartialState_ID</mat-label>
+    <input type="text" matInput [formControl]="input_MartialState_ID" [matAutocomplete]="auto_MartialState_ID">
+    <mat-autocomplete #auto_MartialState_ID="matAutocomplete" [displayWith]="displayMartialStateProperty.bind(this)" (optionSelected)="OnSelectMartialStateChange($event)">
+      <mat-option *ngFor="let option of filtered_TBLShamelMartialState_Options | async" value="option.MartialState_ID">
+        {{option.MartialState_Name}}
+      </mat-option>
+    </mat-autocomplete>
+    </mat-form-field>
+
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+        <mat-form-field appearance="fill">
+        <mat-label> input_Nationality_ID</mat-label>
+        <input type="text" matInput [formControl]="input_Nationality_ID" [matAutocomplete]="auto_Nationality_ID">
+        <mat-autocomplete #auto_Nationality_ID="matAutocomplete" [displayWith]="displayNationalityProperty.bind(this)" (optionSelected)="OnSelectNationalityChange($event)">
+          <mat-option *ngFor="let option of filtered_TBLShamelNationality_Options | async" value="option.Nationality_ID">
+            {{option.Nationality_Name}}
+          </mat-option>
+        </mat-autocomplete>
+        </mat-form-field>
+        
+      </mat-grid-tile>
+
+  <mat-grid-tile >
+         
+                  <mat-label>احتياط</mat-label>
+                  <mat-checkbox [formControl]="input_Emp_IN_Military_Service" [checked]="SelectedEmp && SelectedEmp.Emp_IN_Military_Service> 0 ? true :false"  >Emp_IN_Military_Service</mat-checkbox>
+         
+  </mat-grid-tile>
+
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>محل ورقم القيد</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Kayd_Place" value="SelectedEmp ? SelectedEmp.Kayd_Place:''"  >
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>أرقام الهواتف</mat-label>
+                  <input matInput placeholder="" [formControl]="input_PhoneNum" value="SelectedEmp? SelectedEmp.PhoneNum:''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>رقم الهوية الشخصية</mat-label>
+                  <input matInput placeholder="" [formControl]="input_ID_Number" value="SelectedEmp && SelectedEmp.ID_Number? SelectedEmp.ID_Number:''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>ملاحظة 1</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Rem1" value="SelectedEmp && SelectedEmp.Rem1 ?  SelectedEmp.Rem1 : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+          <mat-form-field appearance="fill">
+                  <mat-label>ملاحظة 2</mat-label>
+                  <input matInput placeholder="" [formControl]="input_Rem2" value="SelectedEmp && SelectedEmp.Rem2 ?  SelectedEmp.Rem2 : ''">
+          </mat-form-field>
+  </mat-grid-tile>
+
+  <mat-grid-tile >
+    <mat-form-field appearance="fill">
+            <mat-label>ملاحظة 2</mat-label>
+            <input matInput placeholder="" [formControl]="input_Rem3" value="SelectedEmp && SelectedEmp.Rem3 ?  SelectedEmp.Rem3 : ''">
+    </mat-form-field>
+
+
+
+</mat-grid-tile>
+
+</mat-grid-list>
+</form>
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-raised-button color="warn" mat-dialog-close >
+    <mat-icon class="mat-icon-rtl-mirror">close
+  </mat-icon>
+  اغلاق
+  </button>
+
+
+
+
+
+  <button mat-raised-button color="accent"   (click)="onReset()" >
+    <mat-icon class="mat-icon-rtl-mirror">clear
+    </mat-icon>
+    مسح الشاشة
+  </button>
+
+
+  <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+    <mat-icon class="mat-icon-rtl-mirror">save
+    </mat-icon>
+    حفظ
+  </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,123 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+<div>
+<p>tblshamelsceducationmodify works!</p>
+
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+
+<form [formGroup]="Form" >
+
+
+
+  <div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>punishment_id</mat-label>
+      <input type="text" matInput [formControl]="punishment_id" formControlName="punishment_id" [matAutocomplete]="auto_punishment_id" >
+      <mat-error *ngIf="errorHandling('punishment_id', 'required')">
+        You must provide a<strong>name</strong>
+     </mat-error>
+
+    
+     <mat-hint *ngIf="((punishment_id.invalid || punishment_id.errors)  && (punishment_id.dirty || punishment_id.touched) )" ><span class="mat-error">Please choose a X</span></mat-hint>
+      
+      <mat-autocomplete #auto_punishment_id="matAutocomplete" [displayWith]="displayPunishmentProperty.bind(this)" (optionSelected)="OnSelectPunishmentChange($event)">
+        <mat-option *ngFor="let option of filteredPunishmentOptions | async" [value]="option.punishment_id">
+          {{option.punishment_name}}
+        </mat-option>
+        
+      </mat-autocomplete>
+     
+    </mat-form-field>
+  </div>
+  
+  <mat-form-field class="example-full-width" appearance="fill">
+    <mat-label>reason_id</mat-label>
+    <input type="text" matInput [formControl]="reason_id" formControlName="reason_id" [matAutocomplete]="auto_reason_id" >
+    <mat-error *ngIf="errorHandling('reason_id', 'required')">
+      You must provide a<strong>name</strong>
+   </mat-error>
+
+    <mat-error *ngIf="((reason_id.invalid || reason_id.errors)  && (reason_id.dirty ||reason_id.touched) )">
+      
+        sdfsdf
+      
+
+   </mat-error>
+   <mat-hint *ngIf="((reason_id.invalid || reason_id.errors)  && (reason_id.dirty || reason_id.touched) )" ><span class="mat-error">Please choose a X</span></mat-hint>
+    
+    <mat-autocomplete #auto_reason_id="matAutocomplete" [displayWith]="displayPunishmentReasonProperty.bind(this)" (optionSelected)="OnSelectPunishmentReasonChange($event)">
+      <mat-option *ngFor="let option of filteredPunishmentReasonOptions | async" [value]="option.punishmentreason_id">
+        {{option.punishmentreason_name}}
+      </mat-option>
+      
+    </mat-autocomplete>
+   
+  </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>reason_id</mat-label>
+        <input type="text" matInput [formControl]="documenttype_id" formControlName="documenttype_id" [matAutocomplete]="auto_documenttype_id">
+        <mat-autocomplete #auto_documenttype_id="matAutocomplete" [displayWith]="displayDocumentTypeProperty.bind(this)" (optionSelected)="OnSelectDocumentTypeChange($event)">
+          <mat-option *ngFor="let option of filteredDocumentTypeOptions | async" [value]="option.documenttype_id">
+            {{option.documenttype_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>document_number</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="document_number"  formControlName="document_number" >
+        
+      </mat-form-field>
+
+
+     
+
+
+     
+
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_documentdate" formControlName="documentdate" [formControl]="documentdate"  
+        (dateInput)="addEventDocumentDate('input', $event)"
+        (dateChange)="addEventDocumentDate('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_documentdate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_documentdate></mat-datepicker>
+      </mat-form-field>
+
+
+    
+
+  </form>
+</div>
+  </mat-dialog-content>
+  <mat-dialog-actions >
+    <button mat-raised-button color="warn" mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"   (click)="onReset()" >
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>

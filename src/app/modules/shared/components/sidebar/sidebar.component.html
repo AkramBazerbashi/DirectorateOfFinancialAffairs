@@ -1,0 +1,18 @@
+
+<mat-nav-list>
+
+  <div class="profile-card">
+    <div class="header">
+        <h2>القوائم الاساسية</h2>
+    </div>        
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <app-menu-list-item *ngFor="let item of navItems" [item]="item"></app-menu-list-item>
+
+
+</mat-nav-list>
+
+
+

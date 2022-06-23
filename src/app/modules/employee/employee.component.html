@@ -1,0 +1,18 @@
+<div class="full-height" >
+    <app-header (toggleSideBarForMe)="sideBarToggler($event)" fxFlexFill="10%"> </app-header>
+    
+    <mat-drawer-container fxFlexFill="80%" >
+        <mat-drawer mode="side" [opened]="sideBarOpen" #appDrawer>
+            <app-sidebar [navItems]="navItems">
+             
+            </app-sidebar>
+        </mat-drawer>
+        <mat-drawer-content>
+
+            <router-outlet> </router-outlet>
+            
+        </mat-drawer-content>
+    </mat-drawer-container>
+    
+    <app-footer fxFlexFill="10%"></app-footer>
+    </div>

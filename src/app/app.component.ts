@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { IGlobalEmployeeList } from './modules/shared/services/employees_department/IGlobalEmployeeList';
+
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,18 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'DirectorateOfFinancialAffairs';
+  title = 'Alshamel';
+
+  constructor(public GlobalEmployeeList : IGlobalEmployeeList)
+  {
+    /*
+    try{
+      GlobalEmployeeList.Fill();
+
+    }catch
+    {}
+*/
+
+    
+  }
 }

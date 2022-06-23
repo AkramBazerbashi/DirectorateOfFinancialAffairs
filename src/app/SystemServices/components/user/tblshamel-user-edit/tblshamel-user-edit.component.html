@@ -1,0 +1,144 @@
+
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+<p>tblshamelsceducationmodify works!</p>
+
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+
+<form [formGroup]="Form" >
+ 
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>رقم العامل</mat-label>        
+          <input matInput type="text" placeholder="" value="" [formControl]="User_ID"  formControlName="User_ID" >        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>اسم العامل</mat-label>        
+          <input matInput type="text" placeholder="" value="" [formControl]="FullName"  formControlName="FullName" >        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        
+        <mat-label>الدائرة</mat-label>
+        <input type="text" matInput [formControl]="Daera_ID" formControlName="Daera_ID" [matAutocomplete]="auto_Daera_ID">
+        <mat-autocomplete #auto_Daera_ID="matAutocomplete" [displayWith]="displayDaeraProperty.bind(this)" (optionSelected)="OnSelectDaeraChange($event)">
+          <mat-option *ngFor="let option of filteredDaeraOptions | async" [value]="option.Daera_ID">
+            {{option.Daera_Name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>اسم الحساب</mat-label>        
+          <input matInput type="text" placeholder="Ex. Pizza" value="" [formControl]="UserName"  formControlName="UserName" >        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>كلمة المرور</mat-label>        
+          <input matInput type="password" placeholder="" value="" [formControl]="Password"  formControlName="Password" >        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>رقم الهارد ديسك</mat-label>        
+          <input matInput type="text" placeholder="" value="" [formControl]="HDSERIAL"  formControlName="HDSERIAL" >        
+      </mat-form-field>
+     
+
+        <mat-form-field appearance="outline">
+        <mat-label>Input type time</mat-label>
+        <input type="time" matInput [formControl]="EnterMinTime"  formControlName="EnterMinTime"  min="09:00:00" max="18:00:00">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Input type time</mat-label>
+            <input type="time" matInput [formControl]="EnterMaxTime"  formControlName="EnterMaxTime"  min="09:00:00" max="18:00:00">
+            </mat-form-field>
+
+    
+        <mat-label>Value binding</mat-label>
+        <mat-checkbox  [formControl]="Enabled"  formControlName="Enabled"  class="example-margin">Check me!</mat-checkbox>
+      
+     
+        
+     
+      <div class="preview" *ngIf="imgFile">
+        <img [src]="this.Selected_User.Photo" style="width:400px; height:250px">
+      </div>
+
+dsdsdfa sdfas asd
+a
+     
+       
+    
+        <ngx-mat-datetime-picker ></ngx-mat-datetime-picker>
+
+
+    dsdsdfa sdfas asd
+a
+
+
+<ngx-mat-timepicker >
+</ngx-mat-timepicker>
+
+<ngx-mat-datetime-picker #picker [enableMeridian]="true"></ngx-mat-datetime-picker>
+
+     <!--
+      <ngx-mat-datetime-picker #picker   [enableMeridian]="true" [showSpinners]="showSpinners" [showSeconds]="showSeconds" [stepHour]="stepHour" [stepMinute]="stepMinute" [stepSecond]="stepSecond" [touchUi]="touchUi"></ngx-mat-datetime-picker>
+-->
+    
+      <!--
+      <div class="form-group">
+        <label for="name">File Name</label>
+        <input class="form-control" id="name" [formControl]="name" formControlName="name" type="text">
+        <div *ngIf="name.touched && name.invalid" class="alert alert-danger">
+          <div *ngIf="name.errors?.required">Name is required.</div>
+        </div>
+      </div>
+      -->
+
+      
+      <div class="form-group">
+        <label for="file">File</label>
+        <input type="file" class="form-control" id="file" [formControl]="file" formControlName="file" (change)="onImageChange($event)">
+        <div *ngIf="file.touched && file.invalid" class="alert alert-danger">
+          <!--
+          <div *ngIf="file.errors?.required">Image file is required.</div>
+          -->
+        </div>
+      </div>
+    
+   
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"   (click)="onReset()" >
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>

@@ -1,0 +1,9 @@
+ <!-- Image Gallery  -->
+ <div class="gallery" ng-show="ShamelEmployeeDocPic_List && ShamelEmployeeDocPic_List.length>0">
+    <ul class="img-thumbnails clearfix">
+      <li class="small-image pull-left thumbnail" ng-repeat="DocPic in ShamelEmployeeDocPic_List">
+        <img src="data:image/png;base64,DocPic.DocImg" />
+      </li>
+    </ul>
+ </div>
+ 

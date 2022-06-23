@@ -1,0 +1,17 @@
+
+   <mat-list dense role="list">
+    <cdk-virtual-scroll-viewport 
+    [itemSize]="10" 
+    class="example-viewport">
+
+    <mat-list-item 
+       *cdkVirtualFor="let item of List_Employee | async" 
+      role="listitem">   
+      <div >{{item.id}}</div>
+      <div >{{item.FullName}}</div>
+    </mat-list-item>
+  </cdk-virtual-scroll-viewport>
+</mat-list>
+
+<button (click)="search()">xxcxzc zxc zx</button>
+zc\zxcz\x c\zxc \z

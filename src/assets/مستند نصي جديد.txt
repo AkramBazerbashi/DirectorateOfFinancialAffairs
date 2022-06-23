@@ -1,0 +1,1069 @@
+<!---->
+    <!--
+    <mat-card-content>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الاضبارة</mat-label>
+          <input type="text" matInput [formControl]="fcl_ID">
+          <mat-error *ngIf="hasError('ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الشطب</mat-label>
+          <input type="text" matInput [formControl]="fcl_PAYROL_ID">
+          <mat-error *ngIf="hasError('PAYROL_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الحاسوب</mat-label>
+          <input type="text" matInput [formControl]="fcl_COMPUTER_ID">
+          <mat-error *ngIf="hasError('COMPUTER_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الذاتي السجل العام بالدولة</mat-label>
+          <input type="text" matInput [formControl]="fcl_GLOBAL_ID">
+          <mat-error *ngIf="hasError('GLOBAL_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الرقم التاميني</mat-label>
+          <input type="text" matInput [formControl]="fcl_INSURANCE_ID">
+          <mat-error *ngIf="hasError('INSURANCE_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الاسم</mat-label>
+          <input type="text" placeholder="الاسم" matInput [formControl]="fcl_FNAME">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الكنية</mat-label>
+          <input type="text" placeholder="الكنية" matInput [formControl]="fcl_LNAME">
+          <mat-error *ngIf="hasError('LNAME', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الاب</mat-label>
+          <input type="text" placeholder="الاب" matInput [formControl]="fcl_FATHER">
+          <mat-error *ngIf="hasError('FATHER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الام</mat-label>
+          <input type="text" placeholder="الام" matInput [formControl]="fcl_MOTHER">
+          <mat-error *ngIf="hasError('MOTHER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>مكان الولادة</mat-label>
+          <input type="text" matInput [formControl]="fcl_BIRTH_PLACE">
+          <mat-error *ngIf="hasError('BIRTH_PLACE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>تاريخ الولادة</mat-label>
+          <input matInput [matDatepicker]="picker_BIRTHDATE" [formControl]="fcl_BIRTHDATE">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('BIRTHDATE', 'required')">is required</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker_BIRTHDATE"></mat-datepicker-toggle>
+          <mat-datepicker #picker_BIRTHDATE></mat-datepicker>
+          <mat-error *ngIf="hasError('DECREE_ISSUANCE_DATE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>محل ورقم القيد</mat-label>
+          <input type="text" matInput [formControl]="fcl_KAYD_PLACE">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الجنس</mat-label>
+          <input matInput placeholder="اختر الجنس" [formControl]="fcl_SEX_NAME" [matAutocomplete]="auto_SEX_NAME">
+          <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_SEX_NAME="matAutocomplete" [displayWith]="Display_SEX_NAME_Property"
+            (optionSelected)="OnSelect_SEX_NAME_Change($event)">
+            <mat-option *ngFor="let option of filtered_SEX | async" [value]="option">
+              {{option.Sex_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الجنسية</mat-label>
+          <input matInput placeholder="اختر الجنسية" [formControl]="fcl_NATIONALITY_ID" [matAutocomplete]="auto_NATIONALITY_ID">
+          <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_NATIONALITY_ID="matAutocomplete" [displayWith]="Display_NATIONALITY_ID_Property"
+            (optionSelected)="OnSelect_NATIONALITY_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_NATIONALITY | async" [value]="option">
+              {{option.Nationality_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الحالة الاجتماعية</mat-label>
+          <input matInput placeholder="اختر الحالة الاجتماعية" [formControl]="fcl_MARTIALSTATE_NAME" [matAutocomplete]="auto_MARTIALSTATE">
+          <mat-error *ngIf="hasError('MARTIALSTATE_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_MARTIALSTATE="matAutocomplete" [displayWith]="Display_MARTIALSTATE_NAME_Property"
+            (optionSelected)="OnSelect_MARTIALSTATE_Change($event)">
+            <mat-option *ngFor="let option of filtered_TBLSHAMELMARTIALSTATE | async" [value]="option">
+              {{option.MartialState_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+      <mat-checkbox required  value="first-value" aria-label="هل هو احتياط">  هل هو احتياط </mat-checkbox>
+
+     
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>أرقام الهواتف</mat-label>
+          <input matInput [formControl]="fcl_PHONENUM">
+          <mat-hint>أرقام الهواتف</mat-hint>
+          
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الهوية الشخصية</mat-label>
+          <input matInput [formControl]="fcl_ID_NUMBER">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('ID_NUMBER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 1</mat-label>
+          <textarea matInput  [formControl]="fcl_REM1">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 2</mat-label>
+          <textarea matInput  [formControl]="fcl_REM2">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 3</mat-label>
+          <textarea matInput  [formControl]="fcl_REM3">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+
+
+      
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>المنطقة</mat-label>
+          <input matInput placeholder="اختر المنطقة" [formControl]="fcl_AREA_ID" [matAutocomplete]="auto_AREA_ID">
+          <mat-error *ngIf="hasError('AREA_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_AREA_ID="matAutocomplete" [displayWith]="Display_AREA_ID_Property"
+            (optionSelected)="OnSelect_AREA_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_AREA | async" [value]="option">
+              {{option.Area_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>اختر الناحية</mat-label>
+          <input matInput placeholder="اختر الناحية" [formControl]="fcl_MINIAREA_ID" [matAutocomplete]="auto_MINIAREA_ID">
+          <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_MINIAREA_ID="matAutocomplete" [displayWith]="Display_MINIAREA_ID_Property"
+            (optionSelected)="OnSelect_MINIAREA_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_TBLShamelMiniArea | async" [value]="option">
+              {{option.MiniArea_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </div>
+
+   
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label> الشارع أو القرية</mat-label>
+          <input matInput placeholder="اختر الشارع أو القرية" [formControl]="fcl_STREETORVILLAGE_ID" [matAutocomplete]="auto_STREETORVILLAGE_ID">
+          <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_STREETORVILLAGE_ID="matAutocomplete" [displayWith]="Display_STREETORVILLAGE_Property"
+            (optionSelected)="OnSelect_STREETORVILLAGE_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_STREETORVILLAGE | async" [value]="option">
+              {{option.StreetOrVillage_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+    
+
+      
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم تأشيرة الجهاز المركزي</mat-label>
+          <input matInput [formControl]="fcl_QARAR_NUM">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('QARAR_NUM', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>تاريخ التأشيرة</mat-label>
+          <input matInput [matDatepicker]="picker_QARARDATE" [formControl]="fcl_QARARDATE">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker_QARARDATE"></mat-datepicker-toggle>
+          <mat-datepicker #picker_QARARDATE></mat-datepicker>
+          <mat-error *ngIf="hasError('QARARDATE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </mat-card-content>
+
+
+    <mat-card-content>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الاضبارة</mat-label>
+          <input type="text" matInput [formControl]="fcl_ID">
+          <mat-error *ngIf="hasError('ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الشطب</mat-label>
+          <input type="text" matInput [formControl]="fcl_PAYROL_ID">
+          <mat-error *ngIf="hasError('PAYROL_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الحاسوب</mat-label>
+          <input type="text" matInput [formControl]="fcl_COMPUTER_ID">
+          <mat-error *ngIf="hasError('COMPUTER_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الذاتي السجل العام بالدولة</mat-label>
+          <input type="text" matInput [formControl]="fcl_GLOBAL_ID">
+          <mat-error *ngIf="hasError('GLOBAL_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الرقم التاميني</mat-label>
+          <input type="text" matInput [formControl]="fcl_INSURANCE_ID">
+          <mat-error *ngIf="hasError('INSURANCE_ID', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الاسم</mat-label>
+          <input type="text" placeholder="الاسم" matInput [formControl]="fcl_FNAME">
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الكنية</mat-label>
+          <input type="text" placeholder="الكنية" matInput [formControl]="fcl_LNAME">
+          <mat-error *ngIf="hasError('LNAME', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الاب</mat-label>
+          <input type="text" placeholder="الاب" matInput [formControl]="fcl_FATHER">
+          <mat-error *ngIf="hasError('FATHER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الام</mat-label>
+          <input type="text" placeholder="الام" matInput [formControl]="fcl_MOTHER">
+          <mat-error *ngIf="hasError('MOTHER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>مكان الولادة</mat-label>
+          <input type="text" matInput [formControl]="fcl_BIRTH_PLACE">
+          <mat-error *ngIf="hasError('BIRTH_PLACE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>تاريخ الولادة</mat-label>
+          <input matInput [matDatepicker]="picker_BIRTHDATE" [formControl]="fcl_BIRTHDATE">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('BIRTHDATE', 'required')">is required</mat-error>
+          <mat-datepicker-toggle matSuffix [for]="picker_BIRTHDATE"></mat-datepicker-toggle>
+          <mat-datepicker #picker_BIRTHDATE></mat-datepicker>
+          <mat-error *ngIf="hasError('DECREE_ISSUANCE_DATE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>محل ورقم القيد</mat-label>
+          <input type="text" matInput [formControl]="fcl_KAYD_PLACE">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الجنس</mat-label>
+          <input matInput placeholder="اختر الجنس" [formControl]="fcl_SEX_NAME" [matAutocomplete]="auto_SEX_NAME">
+          <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_SEX_NAME="matAutocomplete" [displayWith]="Display_SEX_NAME_Property"
+            (optionSelected)="OnSelect_SEX_NAME_Change($event)">
+            <mat-option *ngFor="let option of filtered_SEX | async" [value]="option">
+              {{option.Sex_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الجنسية</mat-label>
+          <input matInput placeholder="اختر الجنسية" [formControl]="fcl_NATIONALITY_ID" [matAutocomplete]="auto_NATIONALITY_ID">
+          <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_NATIONALITY_ID="matAutocomplete" [displayWith]="Display_NATIONALITY_ID_Property"
+            (optionSelected)="OnSelect_NATIONALITY_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_NATIONALITY | async" [value]="option">
+              {{option.Nationality_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>الحالة الاجتماعية</mat-label>
+          <input matInput placeholder="اختر الحالة الاجتماعية" [formControl]="fcl_MARTIALSTATE_NAME" [matAutocomplete]="auto_MARTIALSTATE">
+          <mat-error *ngIf="hasError('MARTIALSTATE_NAME', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_MARTIALSTATE="matAutocomplete" [displayWith]="Display_MARTIALSTATE_NAME_Property"
+            (optionSelected)="OnSelect_MARTIALSTATE_Change($event)">
+            <mat-option *ngFor="let option of filtered_TBLSHAMELMARTIALSTATE | async" [value]="option">
+              {{option.MartialState_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+      <mat-checkbox required  value="first-value" aria-label="هل هو احتياط">  هل هو احتياط </mat-checkbox>
+
+     
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>أرقام الهواتف</mat-label>
+          <input matInput [formControl]="fcl_PHONENUM">
+          <mat-hint>أرقام الهواتف</mat-hint>
+          
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم الهوية الشخصية</mat-label>
+          <input matInput [formControl]="fcl_ID_NUMBER">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('ID_NUMBER', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 1</mat-label>
+          <textarea matInput  [formControl]="fcl_REM1">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 2</mat-label>
+          <textarea matInput  [formControl]="fcl_REM2">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>ملاحظة رقم 3</mat-label>
+          <textarea matInput  [formControl]="fcl_REM3">
+          <mat-hint></mat-hint>
+        </mat-form-field>
+      </div>
+
+
+
+      
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>المنطقة</mat-label>
+          <input matInput placeholder="اختر المنطقة" [formControl]="fcl_AREA_ID" [matAutocomplete]="auto_AREA_ID">
+          <mat-error *ngIf="hasError('AREA_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_AREA_ID="matAutocomplete" [displayWith]="Display_AREA_ID_Property"
+            (optionSelected)="OnSelect_AREA_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_AREA | async" [value]="option">
+              {{option.Area_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>اختر الناحية</mat-label>
+          <input matInput placeholder="اختر الناحية" [formControl]="fcl_MINIAREA_ID" [matAutocomplete]="auto_MINIAREA_ID">
+          <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_MINIAREA_ID="matAutocomplete" [displayWith]="Display_MINIAREA_ID_Property"
+            (optionSelected)="OnSelect_MINIAREA_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_TBLShamelMiniArea | async" [value]="option">
+              {{option.MiniArea_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+
+      </div>
+
+   
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label> الشارع أو القرية</mat-label>
+          <input matInput placeholder="اختر الشارع أو القرية" [formControl]="fcl_STREETORVILLAGE_ID" [matAutocomplete]="auto_STREETORVILLAGE_ID">
+          <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+          <mat-autocomplete #auto_STREETORVILLAGE_ID="matAutocomplete" [displayWith]="Display_STREETORVILLAGE_Property"
+            (optionSelected)="OnSelect_STREETORVILLAGE_ID_Change($event)">
+            <mat-option *ngFor="let option of filtered_STREETORVILLAGE | async" [value]="option">
+              {{option.StreetOrVillage_Name}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+      </div>
+
+
+    
+
+      
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>رقم تأشيرة الجهاز المركزي</mat-label>
+          <input matInput [formControl]="fcl_QARAR_NUM">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-error *ngIf="hasError('QARAR_NUM', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-form-field appearance="fill">
+          <mat-label>تاريخ التأشيرة</mat-label>
+          <input matInput [matDatepicker]="picker_QARARDATE" [formControl]="fcl_QARARDATE">
+          <mat-hint>DD/MM/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker_QARARDATE"></mat-datepicker-toggle>
+          <mat-datepicker #picker_QARARDATE></mat-datepicker>
+          <mat-error *ngIf="hasError('QARARDATE', 'required')">is required</mat-error>
+        </mat-form-field>
+      </div>
+
+
+    </mat-card-content>
+
+
+  </mat-card>
+
+</form>
+
+
+
+<mat-card-content>
+
+      
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 1</mat-label>
+      <textarea matInput  [formControl]="fcl_REM1">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 2</mat-label>
+      <textarea matInput  [formControl]="fcl_REM2">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 3</mat-label>
+      <textarea matInput  [formControl]="fcl_REM3">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+
+
+  
+ 
+
+</mat-card-content>
+
+
+
+<mat-card-content>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الاضبارة</mat-label>
+      <input type="text" matInput [formControl]="fcl_ID">
+      <mat-error *ngIf="hasError('ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الشطب</mat-label>
+      <input type="text" matInput [formControl]="fcl_PAYROL_ID">
+      <mat-error *ngIf="hasError('PAYROL_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الحاسوب</mat-label>
+      <input type="text" matInput [formControl]="fcl_COMPUTER_ID">
+      <mat-error *ngIf="hasError('COMPUTER_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الذاتي السجل العام بالدولة</mat-label>
+      <input type="text" matInput [formControl]="fcl_GLOBAL_ID">
+      <mat-error *ngIf="hasError('GLOBAL_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الرقم التاميني</mat-label>
+      <input type="text" matInput [formControl]="fcl_INSURANCE_ID">
+      <mat-error *ngIf="hasError('INSURANCE_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الاسم</mat-label>
+      <input type="text" placeholder="الاسم" matInput [formControl]="fcl_FNAME">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الكنية</mat-label>
+      <input type="text" placeholder="الكنية" matInput [formControl]="fcl_LNAME">
+      <mat-error *ngIf="hasError('LNAME', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الاب</mat-label>
+      <input type="text" placeholder="الاب" matInput [formControl]="fcl_FATHER">
+      <mat-error *ngIf="hasError('FATHER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الام</mat-label>
+      <input type="text" placeholder="الام" matInput [formControl]="fcl_MOTHER">
+      <mat-error *ngIf="hasError('MOTHER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>مكان الولادة</mat-label>
+      <input type="text" matInput [formControl]="fcl_BIRTH_PLACE">
+      <mat-error *ngIf="hasError('BIRTH_PLACE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>تاريخ الولادة</mat-label>
+      <input matInput [matDatepicker]="picker_BIRTHDATE" [formControl]="fcl_BIRTHDATE">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('BIRTHDATE', 'required')">is required</mat-error>
+      <mat-datepicker-toggle matSuffix [for]="picker_BIRTHDATE"></mat-datepicker-toggle>
+      <mat-datepicker #picker_BIRTHDATE></mat-datepicker>
+      <mat-error *ngIf="hasError('DECREE_ISSUANCE_DATE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>محل ورقم القيد</mat-label>
+      <input type="text" matInput [formControl]="fcl_KAYD_PLACE">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الجنس</mat-label>
+      <input matInput placeholder="اختر الجنس" [formControl]="fcl_SEX_NAME" [matAutocomplete]="auto_SEX_NAME">
+      <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_SEX_NAME="matAutocomplete" [displayWith]="Display_SEX_NAME_Property"
+        (optionSelected)="OnSelect_SEX_NAME_Change($event)">
+        <mat-option *ngFor="let option of filtered_SEX | async" [value]="option">
+          {{option.Sex_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الجنسية</mat-label>
+      <input matInput placeholder="اختر الجنسية" [formControl]="fcl_NATIONALITY_ID" [matAutocomplete]="auto_NATIONALITY_ID">
+      <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_NATIONALITY_ID="matAutocomplete" [displayWith]="Display_NATIONALITY_ID_Property"
+        (optionSelected)="OnSelect_NATIONALITY_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_NATIONALITY | async" [value]="option">
+          {{option.Nationality_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الحالة الاجتماعية</mat-label>
+      <input matInput placeholder="اختر الحالة الاجتماعية" [formControl]="fcl_MARTIALSTATE_NAME" [matAutocomplete]="auto_MARTIALSTATE">
+      <mat-error *ngIf="hasError('MARTIALSTATE_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_MARTIALSTATE="matAutocomplete" [displayWith]="Display_MARTIALSTATE_NAME_Property"
+        (optionSelected)="OnSelect_MARTIALSTATE_Change($event)">
+        <mat-option *ngFor="let option of filtered_TBLSHAMELMARTIALSTATE | async" [value]="option">
+          {{option.MartialState_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+
+  <mat-checkbox required  value="first-value" aria-label="هل هو احتياط">  هل هو احتياط </mat-checkbox>
+
+ 
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>أرقام الهواتف</mat-label>
+      <input matInput [formControl]="fcl_PHONENUM">
+      <mat-hint>أرقام الهواتف</mat-hint>
+      
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الهوية الشخصية</mat-label>
+      <input matInput [formControl]="fcl_ID_NUMBER">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('ID_NUMBER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 1</mat-label>
+      <textarea matInput  [formControl]="fcl_REM1">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 2</mat-label>
+      <textarea matInput  [formControl]="fcl_REM2">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 3</mat-label>
+      <textarea matInput  [formControl]="fcl_REM3">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+
+
+  
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>المنطقة</mat-label>
+      <input matInput placeholder="اختر المنطقة" [formControl]="fcl_AREA_ID" [matAutocomplete]="auto_AREA_ID">
+      <mat-error *ngIf="hasError('AREA_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_AREA_ID="matAutocomplete" [displayWith]="Display_AREA_ID_Property"
+        (optionSelected)="OnSelect_AREA_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_AREA | async" [value]="option">
+          {{option.Area_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>اختر الناحية</mat-label>
+      <input matInput placeholder="اختر الناحية" [formControl]="fcl_MINIAREA_ID" [matAutocomplete]="auto_MINIAREA_ID">
+      <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_MINIAREA_ID="matAutocomplete" [displayWith]="Display_MINIAREA_ID_Property"
+        (optionSelected)="OnSelect_MINIAREA_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_TBLShamelMiniArea | async" [value]="option">
+          {{option.MiniArea_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label> الشارع أو القرية</mat-label>
+      <input matInput placeholder="اختر الشارع أو القرية" [formControl]="fcl_STREETORVILLAGE_ID" [matAutocomplete]="auto_STREETORVILLAGE_ID">
+      <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_STREETORVILLAGE_ID="matAutocomplete" [displayWith]="Display_STREETORVILLAGE_Property"
+        (optionSelected)="OnSelect_STREETORVILLAGE_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_STREETORVILLAGE | async" [value]="option">
+          {{option.StreetOrVillage_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+
+
+
+  
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم تأشيرة الجهاز المركزي</mat-label>
+      <input matInput [formControl]="fcl_QARAR_NUM">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('QARAR_NUM', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>تاريخ التأشيرة</mat-label>
+      <input matInput [matDatepicker]="picker_QARARDATE" [formControl]="fcl_QARARDATE">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker_QARARDATE"></mat-datepicker-toggle>
+      <mat-datepicker #picker_QARARDATE></mat-datepicker>
+      <mat-error *ngIf="hasError('QARARDATE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+</mat-card-content>
+
+
+<mat-card-content>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الاضبارة</mat-label>
+      <input type="text" matInput [formControl]="fcl_ID">
+      <mat-error *ngIf="hasError('ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الشطب</mat-label>
+      <input type="text" matInput [formControl]="fcl_PAYROL_ID">
+      <mat-error *ngIf="hasError('PAYROL_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الحاسوب</mat-label>
+      <input type="text" matInput [formControl]="fcl_COMPUTER_ID">
+      <mat-error *ngIf="hasError('COMPUTER_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الذاتي السجل العام بالدولة</mat-label>
+      <input type="text" matInput [formControl]="fcl_GLOBAL_ID">
+      <mat-error *ngIf="hasError('GLOBAL_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الرقم التاميني</mat-label>
+      <input type="text" matInput [formControl]="fcl_INSURANCE_ID">
+      <mat-error *ngIf="hasError('INSURANCE_ID', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الاسم</mat-label>
+      <input type="text" placeholder="الاسم" matInput [formControl]="fcl_FNAME">
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الكنية</mat-label>
+      <input type="text" placeholder="الكنية" matInput [formControl]="fcl_LNAME">
+      <mat-error *ngIf="hasError('LNAME', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الاب</mat-label>
+      <input type="text" placeholder="الاب" matInput [formControl]="fcl_FATHER">
+      <mat-error *ngIf="hasError('FATHER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الام</mat-label>
+      <input type="text" placeholder="الام" matInput [formControl]="fcl_MOTHER">
+      <mat-error *ngIf="hasError('MOTHER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>مكان الولادة</mat-label>
+      <input type="text" matInput [formControl]="fcl_BIRTH_PLACE">
+      <mat-error *ngIf="hasError('BIRTH_PLACE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>تاريخ الولادة</mat-label>
+      <input matInput [matDatepicker]="picker_BIRTHDATE" [formControl]="fcl_BIRTHDATE">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('BIRTHDATE', 'required')">is required</mat-error>
+      <mat-datepicker-toggle matSuffix [for]="picker_BIRTHDATE"></mat-datepicker-toggle>
+      <mat-datepicker #picker_BIRTHDATE></mat-datepicker>
+      <mat-error *ngIf="hasError('DECREE_ISSUANCE_DATE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>محل ورقم القيد</mat-label>
+      <input type="text" matInput [formControl]="fcl_KAYD_PLACE">
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الجنس</mat-label>
+      <input matInput placeholder="اختر الجنس" [formControl]="fcl_SEX_NAME" [matAutocomplete]="auto_SEX_NAME">
+      <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_SEX_NAME="matAutocomplete" [displayWith]="Display_SEX_NAME_Property"
+        (optionSelected)="OnSelect_SEX_NAME_Change($event)">
+        <mat-option *ngFor="let option of filtered_SEX | async" [value]="option">
+          {{option.Sex_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الجنسية</mat-label>
+      <input matInput placeholder="اختر الجنسية" [formControl]="fcl_NATIONALITY_ID" [matAutocomplete]="auto_NATIONALITY_ID">
+      <mat-error *ngIf="hasError('SEX_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_NATIONALITY_ID="matAutocomplete" [displayWith]="Display_NATIONALITY_ID_Property"
+        (optionSelected)="OnSelect_NATIONALITY_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_NATIONALITY | async" [value]="option">
+          {{option.Nationality_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>الحالة الاجتماعية</mat-label>
+      <input matInput placeholder="اختر الحالة الاجتماعية" [formControl]="fcl_MARTIALSTATE_NAME" [matAutocomplete]="auto_MARTIALSTATE">
+      <mat-error *ngIf="hasError('MARTIALSTATE_NAME', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_MARTIALSTATE="matAutocomplete" [displayWith]="Display_MARTIALSTATE_NAME_Property"
+        (optionSelected)="OnSelect_MARTIALSTATE_Change($event)">
+        <mat-option *ngFor="let option of filtered_TBLSHAMELMARTIALSTATE | async" [value]="option">
+          {{option.MartialState_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+
+  <mat-checkbox required  value="first-value" aria-label="هل هو احتياط">  هل هو احتياط </mat-checkbox>
+
+ 
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>أرقام الهواتف</mat-label>
+      <input matInput [formControl]="fcl_PHONENUM">
+      <mat-hint>أرقام الهواتف</mat-hint>
+      
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم الهوية الشخصية</mat-label>
+      <input matInput [formControl]="fcl_ID_NUMBER">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('ID_NUMBER', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 1</mat-label>
+      <textarea matInput  [formControl]="fcl_REM1">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 2</mat-label>
+      <textarea matInput  [formControl]="fcl_REM2">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>ملاحظة رقم 3</mat-label>
+      <textarea matInput  [formControl]="fcl_REM3">
+      <mat-hint></mat-hint>
+    </mat-form-field>
+  </div>
+
+
+
+  
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>المنطقة</mat-label>
+      <input matInput placeholder="اختر المنطقة" [formControl]="fcl_AREA_ID" [matAutocomplete]="auto_AREA_ID">
+      <mat-error *ngIf="hasError('AREA_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_AREA_ID="matAutocomplete" [displayWith]="Display_AREA_ID_Property"
+        (optionSelected)="OnSelect_AREA_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_AREA | async" [value]="option">
+          {{option.Area_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>اختر الناحية</mat-label>
+      <input matInput placeholder="اختر الناحية" [formControl]="fcl_MINIAREA_ID" [matAutocomplete]="auto_MINIAREA_ID">
+      <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_MINIAREA_ID="matAutocomplete" [displayWith]="Display_MINIAREA_ID_Property"
+        (optionSelected)="OnSelect_MINIAREA_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_TBLShamelMiniArea | async" [value]="option">
+          {{option.MiniArea_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label> الشارع أو القرية</mat-label>
+      <input matInput placeholder="اختر الشارع أو القرية" [formControl]="fcl_STREETORVILLAGE_ID" [matAutocomplete]="auto_STREETORVILLAGE_ID">
+      <mat-error *ngIf="hasError('STREETORVILLAGE_ID', 'required')">is required</mat-error>
+      <mat-autocomplete #auto_STREETORVILLAGE_ID="matAutocomplete" [displayWith]="Display_STREETORVILLAGE_Property"
+        (optionSelected)="OnSelect_STREETORVILLAGE_ID_Change($event)">
+        <mat-option *ngFor="let option of filtered_STREETORVILLAGE | async" [value]="option">
+          {{option.StreetOrVillage_Name}}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+
+
+
+
+  
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>رقم تأشيرة الجهاز المركزي</mat-label>
+      <input matInput [formControl]="fcl_QARAR_NUM">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-error *ngIf="hasError('QARAR_NUM', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+  <div>
+    <mat-form-field appearance="fill">
+      <mat-label>تاريخ التأشيرة</mat-label>
+      <input matInput [matDatepicker]="picker_QARARDATE" [formControl]="fcl_QARARDATE">
+      <mat-hint>DD/MM/YYYY</mat-hint>
+      <mat-datepicker-toggle matSuffix [for]="picker_QARARDATE"></mat-datepicker-toggle>
+      <mat-datepicker #picker_QARARDATE></mat-datepicker>
+      <mat-error *ngIf="hasError('QARARDATE', 'required')">is required</mat-error>
+    </mat-form-field>
+  </div>
+
+
+</mat-card-content>
+-->

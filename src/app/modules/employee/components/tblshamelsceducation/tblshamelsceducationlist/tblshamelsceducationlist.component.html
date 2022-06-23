@@ -1,0 +1,91 @@
+
+<table mat-table [dataSource]="employee_education_List" class="mat-elevation-z8 demo-table">
+    <!-- certificate_name Column -->
+    <ng-container matColumnDef="certificate_name">
+      <th mat-header-cell *matHeaderCellDef>certificate_name.</th>
+      <td mat-cell *matCellDef="let element">{{element.certificate_name}}</td>
+    </ng-container>
+  
+    <!-- specification_name Column -->
+    <ng-container matColumnDef="specification_name">
+      <th mat-header-cell *matHeaderCellDef>specification_name</th>
+      <td mat-cell *matCellDef="let element">{{element.specification_name}}</td>
+    </ng-container>
+  
+    <!-- graduationyear Column -->
+    <ng-container matColumnDef="graduationyear">
+      <th mat-header-cell *matHeaderCellDef>graduationyear</th>
+      <td mat-cell *matCellDef="let element">{{element.graduationyear}}</td>
+    </ng-container>
+
+    
+  
+    <!-- country_name Column -->
+    <ng-container matColumnDef="country_name">
+      <th mat-header-cell *matHeaderCellDef>country_name</th>
+      <td mat-cell *matCellDef="let element">{{element.country_name}}</td>
+    </ng-container>
+  
+      <!-- state_name Column -->
+    <ng-container matColumnDef="state_name">
+    <th mat-header-cell *matHeaderCellDef>state_name</th>
+    <td mat-cell *matCellDef="let element">{{element.state_name}}</td>
+    </ng-container>
+
+    <!-- rank_name Column -->
+    <ng-container matColumnDef="rank_name">
+        <th mat-header-cell *matHeaderCellDef>rank_name</th>
+        <td mat-cell *matCellDef="let element">{{element.rank_name}}</td>
+    </ng-container>
+
+    <!-- studyduration Column -->
+    <ng-container matColumnDef="studyduration">
+        <th mat-header-cell *matHeaderCellDef>studyduration</th>
+        <td mat-cell *matCellDef="let element">{{element.studyduration}}</td>
+    </ng-container>
+
+
+    <ng-container matColumnDef="action">
+        <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+        <tr>
+          <td mat-cell *matCellDef="let element" style="width:20%">
+            <button mat-icon-button color="warn" (click)="Delete(element)" title="View Contact"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="primary" (click)="Update(element)" title="Edit Contact"><mat-icon>edit</mat-icon></button>
+          </td>
+        <tr>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="selected_employee_education_Rows.add(row)"
+        [class.demo-row-is-clicked]="selected_employee_education_Rows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+  
+  <div>
+    <h3>
+      <button (click)="Add()">ds</button>
+    </h3>
+  </div>
+  
+
+
+  <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+  
+  <div *ngIf="!selected_employee_education_Rows.size">
+    Clicked rows will be logged here
+  </div>
+  
+  <ul>
+    <li *ngFor="let clickedRow of selected_employee_education_Rows">
+      Clicked on {{clickedRow.certificate_name}}
+    </li>
+  </ul>
+  

@@ -1,0 +1,18 @@
+.mat-icon {
+  vertical-align: middle;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+
+.menu-list-item.mat-list-item {
+  .mat-list-item-content {
+    flex: 1 1 100%;
+  }
+}
+
+.version-info {
+  font-size: 8pt;
+  padding: 8px;
+  align-self: flex-end;
+}

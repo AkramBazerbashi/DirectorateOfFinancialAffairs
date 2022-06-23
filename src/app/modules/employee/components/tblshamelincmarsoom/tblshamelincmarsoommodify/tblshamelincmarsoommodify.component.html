@@ -1,0 +1,130 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+<p>tblshamelsceducationmodify works!</p>
+
+<div class="text-center">
+  <p class="lead" *ngIf="loading">Loading...</p>
+</div>
+
+
+<form [formGroup]="Form" >
+  <div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input type="text" matInput [formControl]="changereason_id" formControlName="changereason_id" [matAutocomplete]="auto_changereason_id" >
+      <mat-error *ngIf="errorHandling('changereason_id', 'required')">
+        You must provide a<strong>name</strong>
+     </mat-error>
+
+      <mat-error *ngIf="((changereason_id.invalid || changereason_id.errors)  && (changereason_id.dirty || changereason_id.touched) )">        
+          sdfsdf        
+     </mat-error>
+     <mat-hint *ngIf="((changereason_id.invalid || changereason_id.errors)  && (changereason_id.dirty || changereason_id.touched) )" ><span class="mat-error">Please choose a X</span></mat-hint>
+      
+      <mat-autocomplete #auto_changereason_id="matAutocomplete" [displayWith]="displayChangeReasonProperty.bind(this)" (optionSelected)="OnSelectChangeReasonChange($event)">
+        <mat-option *ngFor="let option of filteredChangeReasonOptions | async" [value]="option.changereason_id">
+          {{option.changereason_name}}
+        </mat-option>
+
+        
+      </mat-autocomplete>
+     
+    </mat-form-field>
+  </div>
+  
+     
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>reason_id</mat-label>
+        <input type="text" matInput [formControl]="documenttype_id" formControlName="documenttype_id" [matAutocomplete]="auto_documenttype_id">
+        <mat-autocomplete #auto_documenttype_id="matAutocomplete" [displayWith]="displayDocumentTypeProperty.bind(this)" (optionSelected)="OnSelectDocumentTypeChange($event)">
+          <mat-option *ngFor="let option of filteredDocumentTypeOptions | async" [value]="option.documenttype_id">
+            {{option.documenttype_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>document_number</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="document_number"  formControlName="document_number" >
+        
+      </mat-form-field>
+
+
+     
+
+
+     
+
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_documentdate" formControlName="documentdate" [formControl]="documentdate"  
+        (dateInput)="addEventDocumentDate('input', $event)"
+        (dateChange)="addEventDocumentDate('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_documentdate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_documentdate></mat-datepicker>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>additionalvalue</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="additionalvalue"  formControlName="additionalvalue" >
+        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>incpercentage</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="incpercentage"  formControlName="incpercentage" >
+        
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_begindate" formControlName="begindate" [formControl]="begindate"  
+        (dateInput)="addEventBeginDate('input', $event)"
+        (dateChange)="addEventBeginDate('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_begindate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_begindate></mat-datepicker>
+      </mat-form-field>
+      
+      <mat-form-field appearance="fill">
+        <mat-label>Value binding</mat-label>
+        <input matInput [matDatepicker]="Datepicker_changedate" formControlName="changedate" [formControl]="changedate"  
+        (dateInput)="addEventChangeDate('input', $event)"
+        (dateChange)="addEventChangeDate('change', $event)">
+        <mat-datepicker-toggle matSuffix [for]="Datepicker_changedate"></mat-datepicker-toggle>
+        <mat-datepicker #Datepicker_changedate></mat-datepicker>
+      </mat-form-field>
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"   (click)="onReset()" >
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>

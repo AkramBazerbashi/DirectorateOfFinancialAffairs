@@ -1,0 +1,113 @@
+
+<table mat-table [dataSource]="User_List" class="mat-elevation-z8 demo-table">
+    <!-- certificate_name Column -->
+    <ng-container matColumnDef="User_ID">
+      <th mat-header-cell *matHeaderCellDef>User_ID.</th>
+      <td mat-cell *matCellDef="let element">{{element.User_ID}}</td>
+    </ng-container>
+  
+    <!-- specification_name Column -->
+    <ng-container matColumnDef="FullName">
+      <th mat-header-cell *matHeaderCellDef>FullName</th>
+      <td mat-cell *matCellDef="let element">{{element.FullName}}</td>
+    </ng-container>
+  
+    <!-- graduationyear Column -->
+    <ng-container matColumnDef="Daera_Name">
+      <th mat-header-cell *matHeaderCellDef>Daera_Name</th>
+      <td mat-cell *matCellDef="let element">{{element.TBLShamelDaera.Daera_Name}}</td>
+    </ng-container>
+
+    
+  
+    <!-- country_name Column -->
+    <ng-container matColumnDef="UserName">
+      <th mat-header-cell *matHeaderCellDef>UserName</th>
+      <td mat-cell *matCellDef="let element">{{element.UserName}}</td>
+    </ng-container>
+  
+      <!-- state_name Column -->
+    <ng-container matColumnDef="HDSERIAL">
+    <th mat-header-cell *matHeaderCellDef>HDSERIAL</th>
+    <td mat-cell *matCellDef="let element">{{element.HDSERIAL}}</td>
+    </ng-container>
+
+    <!-- rank_name Column -->
+    <ng-container matColumnDef="EnterMinTime">
+        <th mat-header-cell *matHeaderCellDef>EnterMinTime</th>
+        <td mat-cell *matCellDef="let element">{{element.EnterMinTime}}</td>
+    </ng-container>
+
+    <!-- studyduration Column -->
+    <ng-container matColumnDef="EnterMaxTime">
+        <th mat-header-cell *matHeaderCellDef>EnterMaxTime</th>
+        <td mat-cell *matCellDef="let element">{{element.EnterMaxTime}}</td>
+    </ng-container>
+
+
+        <!-- studyduration Column -->
+        <ng-container matColumnDef="SEnabled">
+            <th mat-header-cell *matHeaderCellDef>SEnabled</th>
+            <td mat-cell *matCellDef="let element">{{element.SEnabled}}</td>
+        </ng-container>
+
+        
+    <!-- studyduration Column -->
+    <ng-container matColumnDef="AccountCreationDate">
+        <th mat-header-cell *matHeaderCellDef>AccountCreationDate</th>
+        <td mat-cell *matCellDef="let element">{{element.AccountCreationDate}}</td>
+    </ng-container>
+
+     <!-- studyduration Column -->
+     <ng-container matColumnDef="AccountCreationTime">
+        <th mat-header-cell *matHeaderCellDef>AccountCreationTime</th>
+        <td mat-cell *matCellDef="let element">{{element.AccountCreationTime}}</td>
+    </ng-container>
+
+     <!-- studyduration Column -->
+     <ng-container matColumnDef="AccountModificationDate">
+        <th mat-header-cell *matHeaderCellDef>AccountModificationDate</th>
+        <td mat-cell *matCellDef="let element">{{element.AccountModificationDate}}</td>
+    </ng-container>
+
+     <!-- studyduration Column -->
+     <ng-container matColumnDef="AccountModificationTime">
+        <th mat-header-cell *matHeaderCellDef>AccountModificationTime</th>
+        <td mat-cell *matCellDef="let element">{{element.AccountModificationTime}}</td>
+    </ng-container>
+
+
+
+    <ng-container matColumnDef="Action">
+        <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+        <tr>
+          <td mat-cell *matCellDef="let element" style="width:20%">
+            <button mat-icon-button color="warn" (click)="Delete(element)" title="View Contact"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="primary" (click)="Update(element)" title="Edit Contact"><mat-icon>edit</mat-icon></button>
+          </td>
+        <tr>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row              
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+  
+  <div>
+    <h3>
+      <button (click)="Add()">ds</button>
+    </h3>
+  </div>
+  
+
+
+  <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+  
+  

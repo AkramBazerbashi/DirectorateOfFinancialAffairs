@@ -1,0 +1,183 @@
+<div fxLayout="column" fxLayoutAlign="center stretch" *ngIf="this.SelectedEmp && this.SelectedEmp.id>0">
+
+        <div fxFlex="100%" >
+                <button mat-button (click)="Show_EntryOfficer()">موظف الإدخال</button>
+                <button mat-button (click)="Show_Documents()">عرض الوثائق المستندات</button>
+                <button mat-button (click)="Add_Modify_Documents()">اضافة / تعديل الوثائق والمستندات</button>
+                <button mat-button (click)="Update_Employee()">تعديل بطاقة</button>
+                <button mat-button (click)="Add_Employee()">ادخال بطاقة</button>
+        </div>
+        
+        <div fxLayout="row" fxLayoutAlign="center strech">
+
+
+                <mat-card fxFlex="25%" fxLayout="column">
+                        <mat-list>
+                                <mat-list-item fxLayout="row">
+                                   <h5>    رقم الإضبارة 
+                                        <span fxFlexAlign="left"> {{this.SelectedEmp.id}} </span>
+                                   </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الحاسب الوزاري </h4>
+                                        <h5>{{this.SelectedEmp.Computer_ID}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الإضبارة </h4>
+                                        <h5>{{this.SelectedEmp.Global_ID}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الإضبارة </h4>
+                                        <h5>{{this.SelectedEmp.Insurance_ID}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الهوية </h4>
+                                        <h5>{{this.SelectedEmp.ID_Number}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الاسم </h4>
+                                        <h5>{{this.SelectedEmp.FName}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الكنية </h4>
+                                        <h5>{{this.SelectedEmp.LName}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4> اسم الأب</h4>
+                                        <h5>{{this.SelectedEmp.Father}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4> اسم الأم</h4>
+                                        <h5>{{this.SelectedEmp.Mother}} </h5>
+                                </mat-list-item>
+                        </mat-list>
+                </mat-card>
+
+                <mat-card fxFlex="25%" fxLayout="column">
+                        <mat-list>
+                                <mat-list-item>
+                                        <h4>الجنس </h4>
+                                        <h5>{{this.SelectedEmp.Sex_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الجنسية </h4>
+                                        <h5>{{this.SelectedEmp.Nationality_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>مكان التولد </h4>
+                                        <h5>{{this.SelectedEmp.Birth_Place}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الحالة الإجتماعية </h4>
+                                        <h5>{{this.SelectedEmp.MartialState_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>ملتحق بخدمة العلم </h4>
+                                        <h5>{{this.SelectedEmp.Emp_IN_Military_Service}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الإضبارة </h4>
+                                        <h5>{{this.SelectedEmp.MiniArea_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الحاسب الوزاري </h4>
+                                        <h5>{{this.SelectedEmp. StreetOrVillage_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم الإضبارة </h4>
+                                        <h5>{{this.SelectedEmp.ManualAddress}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>رقم القيد </h4>
+                                        <h5>{{this.SelectedEmp.Kayd_Place}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>أرقام الهواتف </h4>
+                                        <h5>{{this.SelectedEmp.PhoneNum}} </h5>
+                                </mat-list-item>
+                        </mat-list>
+                </mat-card>
+
+
+
+                <mat-card fxFlex="25%" fxLayout="column">
+                        <mat-list>
+                                <mat-list-item>
+                                        <h4>رقم تأشيرة الجهاز المركزي </h4>
+                                        <h5>{{this.SelectedEmp.Qarar_Num}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>تاريخ التأشيرة </h4>
+                                        <h5>{{this.SelectedEmp.QararDate}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>تاريخ المباشرة</h4>
+                                        <h5>{{this.SelectedEmp.BeginDate}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>آخر وضع وظيفي</h4>
+                                        <h5>{{this.SelectedEmp.ChangeReason_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>ضمن الملاك </h4>
+                                        <h5>{{this.SelectedEmp.MalakState_Name}} </h5>
+                                </mat-list-item>
+
+
+                                <mat-list-item>
+                                        <h4>الوظيفة </h4>
+                                        <h5>{{this.SelectedEmp.JobName_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الفئة </h4>
+                                        <h5>{{this.SelectedEmp.Class_Name}} </h5>
+                                </mat-list-item>
+                                <mat-list-item>
+                                        <h4>الشهادة </h4>
+                                        <h5>{{this.SelectedEmp.Certificate_Name}} </h5>
+                                </mat-list-item>
+
+
+                                <mat-list-item>
+                                        <h4>الشهادة </h4>
+                                        <h5>{{this.SelectedEmp.Accounter_Name}} </h5>
+                                </mat-list-item>
+
+                                <mat-list-item>
+                                        <h4>الراتب </h4>
+                                        <h5>{{this.SelectedEmp.Salary}} </h5>
+                                </mat-list-item>
+
+                        </mat-list>
+                </mat-card>
+
+
+                <mat-card fxFlex="25%" fxLayout="column">
+
+                        <mat-list-item>
+                                <h4>ملاحظة 1 </h4>
+                                <h5>{{this.SelectedEmp.Rem1}} </h5>
+                        </mat-list-item>
+                        <mat-list-item>
+                                <h4>ملاحظة 2 </h4>
+                                <h5>{{this.SelectedEmp.Rem2}} </h5>
+                        </mat-list-item>
+                        <mat-list-item>
+                                <h4>ملاحظة 3 </h4>
+                                <h5>{{this.SelectedEmp.Rem3}} </h5>
+                        </mat-list-item>
+                        <mat-list-item>
+                                <h4>رقم الإضبارة </h4>
+                                <h5>{{this.SelectedEmp.JobName_Name}} </h5>
+                        </mat-list-item>
+
+                </mat-card>
+
+
+
+
+
+        </div>
+
+
+</div>        

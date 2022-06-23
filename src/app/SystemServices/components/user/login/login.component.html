@@ -1,0 +1,82 @@
+
+<div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="20px" >
+ 
+   
+      <div fxLayout="Column" fxLayoutGap="20px"  >
+        <mat-card >
+          <div>
+            <form [formGroup]='loginForm' class="login-form">
+
+              <div>
+              <mat-form-field >
+
+                <input matInput type="text" autocomplete="off" placeholder="اسم المستخدم" formControlName='UserName'
+                  [errorStateMatcher]='matcher'>
+
+                <mat-error>
+
+                  <span *ngIf="!loginForm.get('UserName')!.valid && loginForm.get('UserName')!.touched">الرجاء ادخال اسم
+                    المستخدم</span>
+
+                </mat-error>
+
+              </mat-form-field>
+
+            </div>
+          <div>
+              <mat-form-field class="example-full-width">
+
+                <input matInput autocomplete="off" type="password" placeholder="Password" formControlName='Password'
+                  [errorStateMatcher]='matcher'>
+
+                <mat-error>
+
+                  <span *ngIf="!loginForm.get('Password')!.valid && loginForm.get('Password')!.touched">الرجاء ادخال
+                    كلمة السر</span>
+
+                </mat-error>
+
+              </mat-form-field>
+
+            </div>
+
+              <div>
+                {{this.LoginResultState}}
+              </div>
+
+              <div>
+
+                <button type="submit" [disabled]="!loginForm.valid" mat-flat-button color="primary"
+                  (click)="Login()">تسجيل دخول</button>
+
+              </div>
+
+
+            </form>
+
+          </div>
+
+
+
+        </mat-card>
+
+        <div *ngIf='isLoadingResults'>
+
+          <mat-spinner *ngIf='isLoadingResults'></mat-spinner>
+
+        </div>
+
+      </div>
+
+      <div class="sidenav">
+        <div class="login-main-text ">
+          <h2>Application<br> Login Page</h2>
+          <p>Login or register from here to access.</p>
+        </div>
+      </div>
+
+ 
+</div>
+
+
+

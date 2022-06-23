@@ -1,0 +1,79 @@
+
+<form [formGroup]="SearchForm" class="example-form" >
+
+          <div  fxLayout="row" fxLayoutAlign="center" fxLayoutAlign="center strech">
+
+            <div fxFlex="20%">
+              <img src="" class="rounded"  alt="ddd"/>
+            </div>
+
+           
+
+            <div fxFlex="30%"  >
+              <mat-form-field   appearance="fill" class="full-width">
+                <mat-label>اسم الموظف</mat-label>
+                <input type="text" 
+                    placeholder="اسم الموظف"
+                    aria-label="اسم الموظف"
+                    matInput                         
+                    [formControl]="autocomplete_EmployeeName"
+                    [matAutocomplete]="auto" />
+                  <mat-autocomplete #auto="matAutocomplete" [displayWith]="display_Employee" (optionSelected)="OnSelectEmpFullNameChange($event)">
+                    
+                      <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                      <ng-container *ngIf="!isLoading">
+                      <mat-option *ngFor="let employee of filteredEmployeeNameList"
+                        [value]="employee"
+                                      
+                        >
+                        {{employee.FullName}}
+                      </mat-option>
+                      </ng-container>
+
+                    </mat-autocomplete>                        
+                    
+                </mat-form-field>
+
+
+            </div>
+ 
+            <div fxFlex="40px">
+              <button fxFlex="40px" mat-button (click)="openEmpSearchDialog()" >Open dialog</button>
+            </div>
+            
+  
+            <div fxFlex="20%" fxLayout="row" fxLayoutAlign="center" >
+              <mat-form-field  appearance="fill"  fxFlex="70%" class="full-width">            
+                      <mat-label>رقم الإضبارة</mat-label>
+                      <input matInput  placeholder="رقم الإضبارة" value="" [formControl]="input_Employee_ID" (keydown.enter)="Employee_ID_Filter(input_Employee_ID.value)" />            
+              </mat-form-field>
+
+            </div>
+  
+
+            
+            <div fxFlex="90px" fxLayout ="row" fxLayoutAlign="center" fxLayoutGap="5">
+              <button fxFlex="45px" mat-raised-button color="primary" (click)="btnNextId(input_Employee_ID.value)"> التالي </button>
+              <button fxFlex="45px" mat-raised-button color="primary" (click)="btnPrevId(input_Employee_ID.value)"> السابق </button>
+
+            </div>
+
+  
+            <div   fxLayout="row" fxLayoutAlign="center"  fxFlex="20%">
+              <mat-form-field  appearance="fill"  fxFlex="70%"  class="full-width"   >            
+                <mat-label>رقم الحاسوب</mat-label>
+                <input matInput placeholder="رقم الحاسوب" value="" [formControl]="input_Employee_Computer_ID" (keydown.enter)="Computer_ID_Filter(input_Employee_Computer_ID.value)" />          
+              </mat-form-field>
+
+            </div>
+  
+            <div fxFlex="90px" fxLayout ="row" fxLayoutAlign="center" fxLayoutGap="5">
+              <button fxFlex="45px" mat-raised-button color="primary" (click)="btnNextComputer_ID(input_Employee_Computer_ID.value)"> التالي </button>
+              <button fxFlex="45px" mat-raised-button color="primary" (click)="btnPrevComputer_ID(input_Employee_Computer_ID.value)"> السابق </button>
+            </div>         
+  
+          </div>
+         
+        
+        
+  </form>

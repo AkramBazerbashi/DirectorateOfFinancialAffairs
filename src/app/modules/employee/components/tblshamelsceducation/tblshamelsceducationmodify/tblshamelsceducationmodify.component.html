@@ -1,0 +1,118 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+
+<p>tblshamelsceducationmodify works!</p>
+
+<form [formGroup]="Form" novalidate>
+  <div class="form-group">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Assignee</mat-label>
+      <input type="text" matInput [formControl]="input_certificate_id" formControlName="input_certificate_id" [matAutocomplete]="auto_certificate_id" >
+      <mat-error *ngIf="errorHandling('input_certificate_id', 'required')">
+        You must provide a<strong>name</strong>
+     </mat-error>
+
+      <mat-error *ngIf="((input_certificate_id.invalid || input_certificate_id.errors)  && (input_certificate_id.dirty || input_certificate_id.touched) )">
+        
+          sdfsdf
+        
+
+     </mat-error>
+     <mat-hint *ngIf="((input_certificate_id.invalid || input_certificate_id.errors)  && (input_certificate_id.dirty || input_certificate_id.touched) )" ><span class="mat-error">Please choose a X</span></mat-hint>
+      
+      <mat-autocomplete #auto_certificate_id="matAutocomplete" [displayWith]="displayCertificateProperty.bind(this)" (optionSelected)="OnSelectCertificateChange($event)">
+        <mat-option *ngFor="let option of filteredCertificateOptions | async" [value]="option.certificate_id">
+          {{option.certificate_name}}
+        </mat-option>
+
+        
+      </mat-autocomplete>
+     
+    </mat-form-field>
+  </div>
+  
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>specification_id</mat-label>
+        <input type="text" matInput [formControl]="input_specification_id" [matAutocomplete]="auto_specification_id">
+        <mat-autocomplete #auto_specification_id="matAutocomplete" [displayWith]="displaySpecificationProperty.bind(this)" (optionSelected)="OnSelectSpecificationChange($event)">
+          <mat-option *ngFor="let option of filteredSpecificationOptions | async" [value]="option.specification_id">
+            {{option.specification_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>graduationyear</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="input_graduationyear"  [(ngModel)]="Selected_Employee_Education.graduationyear">
+        
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>studyduration</mat-label>
+        
+          <input matInput type="number" placeholder="Ex. Pizza" value="Sushi" [formControl]="input_studyduration"  [(ngModel)]="Selected_Employee_Education.studyduration">
+        
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Country</mat-label>
+        <input type="text" matInput [formControl]="input_country_id" [matAutocomplete]="auto_country_id" >
+        <mat-autocomplete #auto_country_id="matAutocomplete" [displayWith]="displayCountryProperty.bind(this)" (optionSelected)="OnSelectCountryChange($event)" >
+          <mat-option *ngFor="let option of filteredCountryOptions | async" [value]="option.country_id">
+            {{option.country_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>input_city_id</mat-label>
+        <input type="text" matInput [formControl]="input_city_id" [matAutocomplete]="auto_city_id">
+        <mat-autocomplete #auto_city_id="matAutocomplete" [displayWith]="displayStateProperty.bind(this)" (optionSelected)="OnSelectStateChange($event)">
+          <mat-option *ngFor="let option of filteredStateOptions | async" [value]="option.state_id">
+            {{option.state_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Assignee</mat-label>
+        <input type="text" matInput [formControl]="input_rank_id" [matAutocomplete]="auto_rank_id">
+        <mat-autocomplete #auto_rank_id="matAutocomplete" [displayWith]="displayRankProperty.bind(this)" (optionSelected)="OnSelectRankChange($event)">
+          <mat-option *ngFor="let option of filteredRankOptions | async" [value]="option.rank_id">
+            {{option.rank_name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
+
+  </form>
+  </mat-dialog-content>
+  <mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" mat-dialog-close >
+      <mat-icon class="mat-icon-rtl-mirror">close
+    </mat-icon>
+    اغلاق
+    </button>
+
+
+
+  
+
+    <button mat-raised-button color="accent"   (click)="onReset()" >
+      <mat-icon class="mat-icon-rtl-mirror">clear
+      </mat-icon>
+      مسح الشاشة
+    </button>
+
+
+    <button  mat-raised-button color="primary"  cdkFocusInitial (click)="Save()" >
+      <mat-icon class="mat-icon-rtl-mirror">save
+      </mat-icon>
+      حفظ
+    </button>
+
+  </mat-dialog-actions>

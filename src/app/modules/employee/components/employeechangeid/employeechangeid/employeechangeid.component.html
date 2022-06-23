@@ -1,0 +1,61 @@
+<p>employeechangeid works!</p>
+<form [formGroup]="ChangeEmployeeForm">
+
+<mat-form-field  appearance="fill" class="row">
+    <mat-label>اسم الموظف</mat-label>
+
+    <input type="text" 
+           placeholder="اسم الموظف"
+           aria-label="اسم الموظف"
+           matInput                         
+           [formControl]="autocomplete_EmployeeName"
+           formControlName="autocomplete_EmployeeName"
+           [matAutocomplete]="auto"           
+           >
+          <mat-autocomplete #auto="matAutocomplete" (optionSelected)="OnSelectEmpFullNameChange($event)">
+            <cdk-virtual-scroll-viewport class="autocomplete-test-viewport" 
+            [ngStyle]="{'height': height}"
+            itemSize="25" >
+            <mat-option *cdkVirtualFor="let employee of filteredEmployeeNameList"
+              [value]="employee.FullName"
+              [id]="employee.id"                           
+              class="autocomplete-item"                          
+              >
+              {{employee.FullName}}
+            </mat-option>
+          </cdk-virtual-scroll-viewport>
+
+           
+          
+
+          </mat-autocomplete>
+    
+  </mat-form-field>   
+  
+  <mat-form-field appearance="fill">            
+    <mat-label>رقم الإضبارة القديم</mat-label>
+    <input matInput  placeholder="رقم الإضبارة" value="" [formControl]="old_Computer_ID" >            
+  </mat-form-field>
+
+
+  <mat-form-field appearance="fill">            
+    <mat-label>رقم الإضبارة الجديد</mat-label>
+    <input matInput  placeholder="رقم الإضبارة" value="" [formControl]="new_Computer_ID" >            
+  </mat-form-field>
+
+
+  <button mat-raised-button color="warn" mat-dialog-close (click)="change_employee_id" >
+    <mat-icon class="mat-icon-rtl-mirror">close
+  </mat-icon>
+  تعديل
+  </button>
+
+
+  <button mat-raised-button color="warn" mat-dialog-close >
+    <mat-icon class="mat-icon-rtl-mirror">close
+  </mat-icon>
+  اغلاق
+  </button>
+
+
+</form>

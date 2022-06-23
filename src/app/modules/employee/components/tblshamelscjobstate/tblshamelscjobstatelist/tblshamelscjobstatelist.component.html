@@ -1,0 +1,119 @@
+
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <!-- certificate_name Column -->
+    <ng-container matColumnDef="department_name">
+      <th mat-header-cell *matHeaderCellDef>department_name.</th>
+      <td mat-cell *matCellDef="let element">{{element.department_name}}</td>
+    </ng-container>
+  
+    <!-- specification_name Column -->
+    <ng-container matColumnDef="jobname_name">
+      <th mat-header-cell *matHeaderCellDef>jobname_name</th>
+      <td mat-cell *matCellDef="let element">{{element.jobname_name}}</td>
+    </ng-container>
+  
+    <!-- graduationyear Column -->
+    <ng-container matColumnDef="jobkind_name">
+      <th mat-header-cell *matHeaderCellDef>jobkind_name</th>
+      <td mat-cell *matCellDef="let element">{{element.jobkind_name}}</td>
+    </ng-container>
+
+    
+  
+    <!-- country_name Column -->
+    <ng-container matColumnDef="class_name">
+      <th mat-header-cell *matHeaderCellDef>class_name</th>
+      <td mat-cell *matCellDef="let element">{{element.class_name}}</td>
+    </ng-container>
+  
+      <!-- state_name Column -->
+    <ng-container matColumnDef="salary">
+    <th mat-header-cell *matHeaderCellDef>Salary</th>
+    <td mat-cell *matCellDef="let element">{{element.salary}}</td>
+    </ng-container>
+
+    <!-- rank_name Column -->
+    <ng-container matColumnDef="begindata">
+        <th mat-header-cell *matHeaderCellDef>begindata</th>
+        <td mat-cell *matCellDef="let element">{{element.begindata}}</td>
+    </ng-container>
+
+    <!-- studyduration Column -->
+    <ng-container matColumnDef="changedate">
+        <th mat-header-cell *matHeaderCellDef>changedate</th>
+        <td mat-cell *matCellDef="let element">{{element.changedate}}</td>
+    </ng-container>
+
+    <!-- ChangeReason_Name Column -->
+    <ng-container matColumnDef="changereason_name">
+        <th mat-header-cell *matHeaderCellDef>changereason_name</th>
+        <td mat-cell *matCellDef="let element">{{element.changereason_name}}</td>
+    </ng-container>
+
+    <!-- DocumentType_name Column -->
+    <ng-container matColumnDef="documenttype_name">
+        <th mat-header-cell *matHeaderCellDef>documenttype_name</th>
+        <td mat-cell *matCellDef="let element">{{element.documenttype_name}}</td>
+    </ng-container>
+
+     <!-- Doc_Date Column -->
+     <ng-container matColumnDef="doc_number">
+      <th mat-header-cell *matHeaderCellDef>يسيس سي</th>
+      <td mat-cell *matCellDef="let element">{{element.doc_number}}</td>
+  </ng-container>
+
+    <!-- Doc_Date Column -->
+    <ng-container matColumnDef="doc_date">
+        <th mat-header-cell *matHeaderCellDef>doc_date</th>
+        <td mat-cell *matCellDef="let element">{{element.doc_date}}</td>
+    </ng-container>
+
+    
+
+    <ng-container matColumnDef="action">
+        <tr><th mat-header-cell *matHeaderCellDef> Action </th></tr>
+        <tr>
+          <td mat-cell *matCellDef="let element" style="width:20%">
+            <button mat-icon-button color="warn" (click)="Delete(element)" title="View Contact"><mat-icon>delete</mat-icon></button>
+            <button mat-icon-button color="primary" (click)="Update(element)" title="Edit Contact"><mat-icon>edit</mat-icon></button>
+          </td>
+        <tr>
+      </ng-container>
+
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr
+        mat-row
+        (click)="selected_employee_JobState_Rows.add(row)"
+        [class.demo-row-is-clicked]="selected_employee_JobState_Rows.has(row)"
+        *matRowDef="let row; columns: displayedColumns;"
+    ></tr>
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons 
+                 >
+  </mat-paginator>
+  <div>
+    <h3>
+      <button (click)="Add()">ds</button>
+    </h3>
+  </div>
+  
+
+
+  <div>
+    <h3>
+      Click Log
+    </h3>
+  </div>
+  
+  <div *ngIf="!selected_employee_JobState_Rows.size">
+    Clicked rows will be logged here
+  </div>
+  
+  <ul>
+    <li *ngFor="let clickedRow of selected_employee_JobState_Rows">
+      Clicked on {{clickedRow.changereason_id}}
+    </li>
+  </ul>
+  

@@ -1,0 +1,98 @@
+table {
+    width: 100%;
+    
+}
+
+.mat-column-serialNumber {
+    padding-right: 40px;
+}
+.mat-column-action {
+    text-align: right;
+}
+
+:host{
+    direction: rtl;
+}
+
+.filterGroup{
+    display: flex;
+}
+
+.filterGroup1{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    mat-form-field{
+        width: 200px;
+    }
+}
+
+.filterGroup2{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    mat-form-field{
+        width: 200px;
+    }
+}
+
+.filterGroup3{
+    margin-left: 50px;
+    display: flex;
+    flex-direction: column;
+    mat-form-field{
+        width: 200px;
+    }
+
+    h4{
+        width: fit-content;
+        cursor: pointer;
+    }
+}
+
+.label{
+    position: relative;
+    left: -550px;
+}
+
+h2{
+    background-color: darkgoldenrod;
+    padding: 10px;
+    padding-inline: 20px;
+}
+
+.demo-row-is-clicked {
+    background-color: orange !important;
+  }
+
+.mat-row:nth-child(even){
+    background-color: rgb(182, 182, 182);
+}
+.mat-row:nth-child(odd){
+    background-color: white;
+}
+
+.add {
+    font-size: 20px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.edit {
+    padding: 5px;
+    cursor: pointer;
+}
+
+.delete {
+    padding: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.mat-header-row.cdk-header-row {
+    th{
+        font-weight: bold ;
+        font-size: 18px ;
+    }
+}
+

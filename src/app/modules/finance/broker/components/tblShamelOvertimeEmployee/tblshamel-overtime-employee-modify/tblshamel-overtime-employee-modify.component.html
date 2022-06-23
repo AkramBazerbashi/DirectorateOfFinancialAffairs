@@ -1,0 +1,118 @@
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="Form">
+
+        <input type="hidden" formControlName="Serail" [ngModel]="selected_overtime_employee.serial">
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>الأسم</mat-label>
+            <input matInput type="text" value="" [formControl]="FName" formControlName="FName" required>           
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>الكنية</mat-label>
+            <input matInput type="text" value="" [formControl]="LName" formControlName="LName"  required>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>الأب</mat-label>
+            <input matInput type="text" value="" [formControl]="Father" formControlName="Father"  required>
+        </mat-form-field>
+        
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>الأم</mat-label>
+            <input matInput type="text" value="" [formControl]="mother" formControlName="mother"  required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>تاريخ الولادة</mat-label>
+            <input matInput [matDatepicker]="Datepicker_BirthDate" formControlName="BirthDate"
+                [formControl]="BirthDate" required>
+            <mat-datepicker-toggle matSuffix [for]="Datepicker_BirthDate"></mat-datepicker-toggle>
+            <mat-datepicker #Datepicker_BirthDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>الجنس</mat-label>
+            <mat-select [(value)]="selected" required>
+                <mat-option value="ذكر">ذكر</mat-option>
+                <mat-option value="أنثى">أنثى</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>ساعات الخدمة</mat-label>
+
+            <input matInput type="number" value="" [formControl]="ServiceDayes" formControlName="ServiceDayes"  required>
+
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial <= 0">
+            <mat-label>EnterUserName</mat-label>
+
+            <input matInput type="text" value="" [formControl]="EnterUserName" formControlName="EnterUserName">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial <= 0">
+            <mat-label>EnterDate</mat-label>
+            <input matInput [matDatepicker]="Datepicker_enterDate" formControlName="EnterDate" [formControl]="EnterDate" [readonly]="true">
+            <mat-datepicker-toggle matSuffix [for]="Datepicker_enterDate"></mat-datepicker-toggle>
+            <mat-datepicker #Datepicker_enterDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial <= 0">
+            <mat-label>EnterTime</mat-label>
+            <input type="time" matInput formControlName="EnterTime" [formControl]="EnterTime" [readonly]="true">
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial > 0">
+            <mat-label>ModifyUserName</mat-label>
+
+            <input matInput type="text" value="" [formControl]="ModifyUserName" formControlName="ModifyUserName" [readonly]="true">
+
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial > 0">
+            <mat-label>ModifyDate</mat-label>
+            <input matInput [matDatepicker]="Datepicker_modifyDate" formControlName="ModifyDate"
+                [formControl]="ModifyDate" [readonly]="true">
+            <mat-datepicker-toggle matSuffix [for]="Datepicker_modifyDate"></mat-datepicker-toggle>
+            <mat-datepicker #Datepicker_modifyDate></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" *ngIf="selected_overtime_employee.serial!= null && selected_overtime_employee.serial > 0">
+            <mat-label>ModifyTime</mat-label>
+            <input type="time" matInput formControlName="ModifyTime" [formControl]="ModifyTime" [readonly]="true">
+        </mat-form-field>
+
+
+
+
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-raised-button color="warn" [mat-dialog-close]="false">
+        <mat-icon class="mat-icon-rtl-mirror">close
+        </mat-icon>
+        اغلاق
+    </button>
+
+
+
+
+
+    <button mat-raised-button color="accent" (click)="onReset()">
+        <mat-icon class="mat-icon-rtl-mirror">clear
+        </mat-icon>
+        مسح الشاشة
+    </button>
+
+
+    <button mat-raised-button color="primary" cdkFocusInitial (click)="Save()" [mat-dialog-close]="true" [disabled]="Form.invalid   ">
+        <mat-icon class="mat-icon-rtl-mirror">save
+        </mat-icon>
+        حفظ
+    </button>
+
+</mat-dialog-actions>

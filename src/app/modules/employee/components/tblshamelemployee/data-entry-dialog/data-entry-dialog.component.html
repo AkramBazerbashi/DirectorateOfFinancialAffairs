@@ -1,0 +1,48 @@
+<h2 mat-dialog-title>Install Angular</h2>
+<mat-dialog-content class="mat-typography">
+<mat-card>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>enterusername</mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="SelectedEmp.EnterUserName" name="enterusername">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>enterdate</mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="SelectedEmp.EnterDate" name="enterdate">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>entertime</mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="SelectedEmp.EnterTime" name="entertime">
+    </mat-form-field>
+
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>modifyusername </mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="SelectedEmp.ModifyUserName" name="modifyusername ">
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>modifydate </mat-label>
+        <input matInput placeholder="Ex. Pizza" [value]="SelectedEmp.ModifyDate" name="modifydate ">
+    </mat-form-field>
+
+    
+
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>modifytime </mat-label>
+        <input matInput placeholder="Ex. Pizza" value="{{ SelectedEmp.ModifyTime | date:'mediumTime' }}" name="modifytime">
+    </mat-form-field>
+
+    
+ 
+
+</mat-card>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="true" cdkFocusInitial >Install</button>
+</mat-dialog-actions>
+
+

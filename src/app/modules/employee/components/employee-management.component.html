@@ -1,0 +1,28 @@
+
+
+<div fxLayout="column" fxLayoutGap="5px" fxFlexAlign="strech strech">
+    <div >
+      <app-employee-search-bar    (OnFindEmployee)="FindEmployeeFromBar($event)"  ></app-employee-search-bar>
+    </div>
+    
+    
+    <div   >
+      <router-outlet></router-outlet>
+      <!--
+      <app-new-employee-card  *ngIf=" Window =='AddEmp'"  [Selected_Employee] = "SelectedEmp.value" > </app-new-employee-card>
+    
+      <app-tblshamelsceducationlist  *ngIf=" Window=='2'"  [id] = "(SelectedEmp && SelectedEmp.value) ?  SelectedEmp.value.id : -1" > </app-tblshamelsceducationlist>
+      <app-tblshamelsccourselist *ngIf=" Window=='4'" [id] = "SelectedEmp && SelectedEmp.value ?    SelectedEmp.value.id : -1   " fxFlexFill> </app-tblshamelsccourselist>
+      <app-tblshamelscjobstatelist *ngIf=" Window=='3'  " [id] = "SelectedEmp && SelectedEmp.value ?  SelectedEmp.value.id : -1 "  > </app-tblshamelscjobstatelist>
+      <app-tblshamelscbonuslist  *ngIf=" Window=='5'   " [id] = "SelectedEmp && SelectedEmp.value ?  SelectedEmp.value.id : -1 "  > </app-tblshamelscbonuslist>
+      <app-tblshamelscfreeholidaylist  *ngIf=" Window=='6'   " [id] = "SelectedEmp && SelectedEmp.value ?  SelectedEmp.value.id : -1 "  > </app-tblshamelscfreeholidaylist>
+      <app-tblshamelscpunishmentlist *ngIf=" Window=='7'  " [id] = "SelectedEmp && SelectedEmp.value ?  SelectedEmp.value.id : -1 "  > </app-tblshamelscpunishmentlist>
+      <app-tblshamelincmarsoomlist *ngIf=" Window=='8'" > </app-tblshamelincmarsoomlist>
+      <app-deleteemployee *ngIf=" Window=='9'" > </app-deleteemployee>
+      <app-employeechangeid *ngIf=" Window=='10'" > </app-employeechangeid>
+      <app-emp-show-data *ngIf=" Window=='1'" [SelectedEmp]=" SelectedEmp.value"> </app-emp-show-data>
+      -->
+    </div>
+    
+    
+    </div>

@@ -1,0 +1,43 @@
+<button mat-raised-button color="accent"   (click)="Next()" >
+    <mat-icon class="mat-icon-rtl-mirror">clear
+    </mat-icon>
+    التالي
+</button>
+
+<button mat-raised-button color="accent"   (click)="Prev()" >
+    <mat-icon class="mat-icon-rtl-mirror">clear
+    </mat-icon>
+السابق
+</button>
+
+<button mat-raised-button color="accent"   (click)="First()" >
+    <mat-icon class="mat-icon-rtl-mirror">clear
+    </mat-icon>
+الأول
+</button>
+
+
+<button mat-raised-button color="accent"   (click)="Last()" >
+    <mat-icon class="mat-icon-rtl-mirror">clear
+    </mat-icon>
+الأخير
+</button>
+
+
+
+<button  mat-raised-button color="primary"  cdkFocusInitial (click)="Print()" >
+    <mat-icon class="mat-icon-rtl-mirror">save
+    </mat-icon>
+    طباعة
+</button>
+
+<button  mat-raised-button color="primary"  cdkFocusInitial (click)="PrintAll()" >
+    <mat-icon class="mat-icon-rtl-mirror">save
+    </mat-icon>
+    طباعة الكل
+</button>
+
+<div>
+    <img   [src]="Selected_EmployeeDocPic && Selected_EmployeeDocPic.DocImg ? Selected_EmployeeDocPic.DocImg : 'localhost/image.png'"/>
+</div>
+
